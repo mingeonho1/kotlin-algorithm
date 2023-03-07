@@ -1,5 +1,5 @@
 # Kotlin
-코딩 테스트 연습 ( Kotlin )
+### 알고리즘 ( Kotlin )
 
 ![Kotlin](https://raw.githubusercontent.com/irontec/android-kotlin-samples/master/logo.png)
 
