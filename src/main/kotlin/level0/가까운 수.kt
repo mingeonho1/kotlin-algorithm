@@ -19,7 +19,5 @@ fun main() {
     val n = 20
     val result = 28
 
-    println(solution(array, n))
-
     checkAnswer(solution(array, n) == result)
 }
