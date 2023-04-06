@@ -1,5 +1,7 @@
 package level0
 
+import checkAnswer
+
 /**
  * © DEV MING 💻
  * Current date: 2023-03-07
@@ -17,6 +19,6 @@ fun main() {
     val bin1 = "1001"
     val bin2 = "1111"
     val result = "11000"
-    
+
     checkAnswer(solution(bin1, bin2) == result)
 }

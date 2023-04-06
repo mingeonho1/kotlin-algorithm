@@ -1,5 +1,7 @@
 package level0
 
+import checkAnswer
+
 /**
  * © DEV MING 💻
  * Current date: 2023-02-23
@@ -18,6 +20,6 @@ private fun solution(age: Int) = age.toString().map { (it.code + 49).toChar() }.
 fun main() {
     val age = 23
     val result = "cd"
-    
+
     checkAnswer(solution(age) == result)
 }

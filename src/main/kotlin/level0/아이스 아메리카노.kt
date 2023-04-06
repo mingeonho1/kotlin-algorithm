@@ -1,5 +1,7 @@
 package level0
 
+import checkAnswer
+
 /**
  * © DEV MING 💻
  * Current date: 2023-01-20
@@ -17,6 +19,6 @@ private fun solution(money: Int) = intArrayOf(money / 5500, money % 5500)
 fun main() {
     val money = 15000
     val result = intArrayOf(2, 4000)
-    
+
     checkAnswer(solution(money).contentEquals(result))
 }

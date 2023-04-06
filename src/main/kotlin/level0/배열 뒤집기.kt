@@ -1,5 +1,7 @@
 package level0
 
+import checkAnswer
+
 /**
  * © DEV MING 💻
  * Current date: 2023-01-20
@@ -15,6 +17,6 @@ private fun solution(numList: IntArray) = numList.reversedArray()
 fun main() {
     val numList = intArrayOf(1, 0, 1, 1, 1, 3, 5)
     val result = intArrayOf(5, 3, 1, 1, 1, 0, 1)
-    
+
     checkAnswer(solution(numList).contentEquals(result))
 }

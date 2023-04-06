@@ -1,5 +1,7 @@
 package level0
 
+import checkAnswer
+
 /**
  * © DEV MING 💻
  * Current date: 2023-01-20
@@ -15,6 +17,6 @@ private fun solution(numbers: IntArray) = numbers.average()
 fun main() {
     val numbers = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     val result = 5.5
-    
+
     checkAnswer(solution(numbers) == result)
 }
