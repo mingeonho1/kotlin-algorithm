@@ -1,5 +1,7 @@
 package level0
 
+import checkAnswer
+
 /**
  * © DEV MING 💻
  * Current date: 2023-04-04

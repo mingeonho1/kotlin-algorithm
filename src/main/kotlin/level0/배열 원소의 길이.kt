@@ -1,5 +1,7 @@
 package level0
 
+import checkAnswer
+
 /**
  * © DEV MING 💻
  * Current date: 2023-01-20
@@ -15,6 +17,6 @@ private fun solution(strList: Array<String>) = strList.map { it.length }.toIntAr
 fun main() {
     val strList = arrayOf("We", "are", "the", "world!")
     val result = intArrayOf(2, 3, 3, 6)
-    
+
     checkAnswer(solution(strList).contentEquals(result))
 }
