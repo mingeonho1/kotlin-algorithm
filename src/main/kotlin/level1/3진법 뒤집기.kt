@@ -16,7 +16,6 @@ n은 1 이상 100,000,000 이하인 자연수입니다. **/
 
 private fun solution(n: Int) = n.toString(3).reversed().toInt(3)
 
-
 fun main() {
     val n = 45
     val answer = 7
