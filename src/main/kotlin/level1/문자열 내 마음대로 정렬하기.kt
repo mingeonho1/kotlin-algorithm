@@ -34,6 +34,9 @@ private fun solution(strings: Array<String>, n: Int): Array<String> {
     return answer
 }
 
+// fun solution(strings: Array<String>, n: Int): Array<String> =
+//    strings.sortedWith(compareBy({ it[n] }, { it })).toTypedArray()
+
 fun main() {
     val strings = arrayOf("sun", "bed", "car")
     val n = 1
