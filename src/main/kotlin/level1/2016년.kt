@@ -1,8 +1,7 @@
 package level1
 
 import checkAnswer
-import java.time.MonthDay
-import java.time.Year
+import java.time.YearMonth
 
 
 /**
@@ -32,13 +31,22 @@ import java.time.Year
 //    else -> ""
 //}
 
+//private fun solution(a: Int, b: Int): String {
+//    val year = 2016
+//    val date = when (a) {
+//        2 -> if (Year.of(year).isLeap) MonthDay.of(a, 29) else MonthDay.of(a, b)
+//        else -> MonthDay.of(a, b)
+//    }
+//    return date.atYear(year).dayOfWeek.name.substring(0, 3)
+//}
+
 private fun solution(a: Int, b: Int): String {
     val year = 2016
     val date = when (a) {
-        2 -> if (Year.of(year).isLeap) MonthDay.of(a, 29) else MonthDay.of(a, b)
-        else -> MonthDay.of(a, b)
+        2 -> if (b == 29) return "MON" else YearMonth.of(year, a).atDay(b)
+        else -> YearMonth.of(year, a).atDay(b)
     }
-    return date.atYear(year).dayOfWeek.name.substring(0, 3)
+    return date.dayOfWeek.name.substring(0, 3)
 }
 
 fun main() {
