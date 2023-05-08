@@ -35,7 +35,7 @@ private fun solution(left: Int, right: Int): Int {
 }
 
 // GPT가 최적화 해준건데 어렵다 ..
-fun isPrime(n: Int): Boolean {
+private fun isPrime(n: Int): Boolean {
     if (n < 2) {
         return false
     }
