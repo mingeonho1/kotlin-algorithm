@@ -31,7 +31,7 @@ private fun solution(k: Int, score: IntArray): IntArray {
     val array = mutableListOf<Int>()
     for (s in score) {
         array += s
-        answer += if (array.size > 3) {
+        answer += if (array.size > k) {
             array.sortedDescending().subList(0, k).minOrNull()!!
         } else {
             array.minOrNull()!!
