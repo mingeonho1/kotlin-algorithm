@@ -51,9 +51,8 @@ private fun solution(N: Int, stages: IntArray): IntArray {
 
 fun main() {
     val N = 5
-    val stages = intArrayOf(3, 3, 3, 3)
+    val stages = intArrayOf(2, 1, 2, 6, 2, 4, 3, 3)
     val answer = intArrayOf(3, 4, 2, 1, 5)
 
-    println(solution(N, stages).toList())
     checkAnswer(solution(N, stages).contentEquals(answer))
 }
