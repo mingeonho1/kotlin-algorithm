@@ -39,8 +39,15 @@ section의 원소는 오름차순으로 정렬되어 있습니다.
  **/
 
 private fun solution(n: Int, m: Int, section: IntArray): Int {
-    val range = section.last() - section.first() + 1
-    return range / m + if (range % m == 0) 0 else 1
+    var answer = 0
+    var start = section[0]
+    for (i in section.indices) {
+        if (section[i] - start >= m) {
+            answer++
+            start = section[i]
+        }
+    }
+    return answer + 1
 }
 
 fun main() {
