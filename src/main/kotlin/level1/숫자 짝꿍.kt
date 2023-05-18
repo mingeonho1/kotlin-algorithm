@@ -1,6 +1,7 @@
 package level1
 
 import checkAnswer
+import kotlin.math.min
 
 /**
  * © DEV MING 💻
@@ -25,33 +26,26 @@ X, Y의 짝꿍은 상당히 큰 정수일 수 있으므로, 문자열로 반환�
  **/
 
 private fun solution(X: String, Y: String): String {
-    val answer = ArrayList<Char>()
-    val compareLow: String
-    val compareHigh: StringBuilder
+    val xCount = IntArray(10)
+    val yCount = IntArray(10)
 
-    if (X.length <= Y.length) {
-        compareLow = X
-        compareHigh = StringBuilder(Y)
-    } else {
-        compareLow = Y
-        compareHigh = StringBuilder(X)
-    }
+    for (c in X) xCount[c - '0']++
+    for (c in Y) yCount[c - '0']++
 
-    for (c in compareLow) {
-        if (compareHigh.contains(c)) {
-            answer.add(c)
-            val index = compareHigh.indexOf(c)
-            compareHigh.replace(index, index + 1, "")
+    val commonNumbers = StringBuilder()
+    for (i in 9 downTo 0) {
+        val count = min(xCount[i], yCount[i])
+        for (j in 0 until count) {
+            commonNumbers.append(i)
         }
     }
 
-    return if (answer.isEmpty()) {
+    return if (commonNumbers.isEmpty()) {
         "-1"
-    } else if (answer.first() == '0') {
+    } else if (commonNumbers.first() == '0') {
         "0"
     } else {
-        answer.sortDescending()
-        answer.joinToString("")
+        commonNumbers.toString()
     }
 }
 
