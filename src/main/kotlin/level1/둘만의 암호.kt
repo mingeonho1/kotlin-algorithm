@@ -37,22 +37,26 @@ private fun solution(s: String, skip: String, index: Int): String {
         while (i > 0) {
             if (skip.contains((char + 1).toChar())) {
                 char++
+                if (char > 122) char -= 26
             } else {
                 char++
+                if (char > 122) {
+                    char -= 26
+                    if (skip.contains((char).toChar())) continue
+                }
                 i--
             }
         }
-        if (char > 122) char -= 26
         answer += char.toChar()
     }
     return answer
 }
 
 fun main() {
-    val s = "aukks"
-    val skip = "wbqd"
-    val index = 5
-    val answer = "happy"
+    val s = "bcdefghijklmnopqrstuvwxyz"
+    val skip = "a"
+    val index = 1
+    val answer = "cdefghijklmnopqrstuvwxyzb"
 
     checkAnswer(solution(s, skip, index) == answer)
 }
