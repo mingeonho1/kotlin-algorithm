@@ -35,15 +35,9 @@ private fun solution(s: String, skip: String, index: Int): String {
         var char = c.code
         var i = index
         while (i > 0) {
-            if (skip.contains((char + 1).toChar())) {
-                char++
-                if (char > 122) char -= 26
-            } else {
-                char++
-                if (char > 122) {
-                    char -= 26
-                    if (skip.contains((char).toChar())) continue
-                }
+            char++
+            if (char > 122) char -= 26
+            if (!skip.contains(char.toChar())) {
                 i--
             }
         }
