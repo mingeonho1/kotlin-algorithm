@@ -43,9 +43,22 @@ private fun solution(ingredient: IntArray): Int {
     return answer
 }
 
+private fun solution2(ingredient: IntArray): Int {
+    var answer: Int = 0
+    val sb = StringBuilder()
+    for (item in ingredient) {
+        sb.append('0' + item)
+        if (sb.length >= 4 && sb.substring(sb.length - 4) == "1231") {
+            sb.setLength(sb.length - 4)
+            answer++
+        }
+    }
+    return answer
+}
+
 fun main() {
     val ingredient = intArrayOf(2, 1, 1, 2, 3, 1, 2, 3, 1)
     val answer = 2
 
-    checkAnswer(solution(ingredient) == answer)
+    checkAnswer(solution2(ingredient) == answer)
 }
