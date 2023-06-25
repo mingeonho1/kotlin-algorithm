@@ -29,15 +29,17 @@ ingredient의 원소는 1, 2, 3 중 하나의 값이며, 순서대로 빵, 야�
 
 private fun solution(ingredient: IntArray): Int {
     var answer = 0
-    var ing = ingredient.joinToString("")
+    val ing = StringBuilder(ingredient.joinToString(""))
+    val pattern = "1231"
+
     while (true) {
-        if (ing.contains("1231")) {
-            ing = ing.replaceFirst("1231", "")
-            answer++
-        } else {
-            break
-        }
+        val index = ing.indexOf(pattern)
+        if (index == -1) break
+
+        ing.delete(index, index + pattern.length)
+        answer++
     }
+
     return answer
 }
 
