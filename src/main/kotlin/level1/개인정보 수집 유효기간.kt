@@ -14,37 +14,19 @@ private fun solution(today: String, terms: Array<String>, privacies: Array<Strin
         it.split(" ")[0] to it.split(" ")[1].toInt()
     }
 
-    val todayDate = today.replace(".", "").toInt()
+    val toadyTotal = total(today)
 
     return privacies.mapIndexedNotNull { index, privacy ->
         val (date, type) = privacy.split(" ")
-        var (year, month, day) = date.split(".").map { it.toInt() }
+        val day = termsMap[type]!! * 28
 
-        month += termsMap[type]!!
-
-        while (month > 12) {
-            year += month / 12
-            month %= 12
-        }
-
-        if (month <= 0) {
-            month += 12
-        }
-
-        val parsingMonth = if (month < 10) "0$month" else month.toString()
-
-        if (day == 1) {
-            day = 28
-            month -= 1
-        } else {
-            day -= 1
-        }
-
-        val parsingDay = if (day < 10) "0$day" else day.toString()
-
-        val newDate = "$year$parsingMonth$parsingDay".toInt()
-        if (todayDate > newDate) index + 1 else null
+        if (toadyTotal >= total(date) + day) index + 1 else null
     }.toIntArray()
+}
+
+private fun total(date: String): Int {
+    val (yyyy, mm, dd) = date.split(".").map(String::toInt)
+    return yyyy * 12 * 28 + mm * 28 + dd
 }
 
 fun main() {
