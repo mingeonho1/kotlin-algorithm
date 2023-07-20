@@ -7,25 +7,16 @@ class Solution {
             "N" to intArrayOf(-1, 0)
         )
 
-
         val maxX = park.size - 1
         val maxY = park[0].length - 1
 
-        var startX = 0
-        var startY = 0
-        var breaker = false
-
-        for (i in park.indices) {
-            for (n in park[i].indices) {
-                if (park[i][n] == 'S') {
-                    startX = i
-                    startY = n
-                    breaker = true
-                }
+        val startPosition = park.indices.flatMap { i ->
+            park[i].indices.map { n ->
+                if (park[i][n] == 'S') Pair(i, n) else null
             }
-            if (breaker) break
-        }
+        }.first { it != null }!!
 
+        var (startX, startY) = startPosition
 
         for (ro in routes) {
             val (direction, num) = ro.split(" ")
@@ -37,21 +28,15 @@ class Solution {
             val finalX = startX + moveX
             val finalY = startY + moveY
 
-            // 뒤로 움직일 때를 고려한 조건
             if (finalX in 0..maxX && finalY in 0..maxY
                 && startX in 0..maxX && startY in 0..maxY
             ) {
-                var hurdle = false
-                if (moveX == 0) {
+                val hurdle = if (moveX == 0) {
                     val range = if (moveY >= 0) startY..finalY else startY downTo finalY
-                    for (i in range) {
-                        if (park[startX][i] == 'X') hurdle = true
-                    }
+                    range.any { i -> park[startX][i] == 'X' }
                 } else {
                     val range = if (moveX >= 0) startX..finalX else startX downTo finalX
-                    for (i in range) {
-                        if (park[i][startY] == 'X') hurdle = true
-                    }
+                    range.any { i -> park[i][startY] == 'X' }
                 }
 
                 if (!hurdle) {
