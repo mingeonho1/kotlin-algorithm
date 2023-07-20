@@ -38,32 +38,32 @@ private fun solution(park: Array<String>, routes: Array<String>): IntArray {
 
 
     for (ro in routes) {
-        println(ro)
         val (direction, num) = ro.split(" ")
         val (x, y) = directionMap[direction]!!
 
         val moveX = x * num.toInt()
         val moveY = y * num.toInt()
 
-        if (startX + moveX in 0..maxX
-            && startY + moveY in 0..maxY
-        ) {
+        val finalX = startX + moveX
+        val finalY = startY + moveY
 
+        // 뒤로 움직일 때를 고려한 조건
+        if (finalX in 0..maxX && finalY in 0..maxY
+            && startX in 0..maxX && startY in 0..maxY
+        ) {
             var hurdle = false
             if (moveX == 0) {
-                for (i in startY..startY + moveY) {
-                    println(listOf(startX, i))
+                val range = if (moveY >= 0) startY..finalY else startY downTo finalY
+                for (i in range) {
                     if (park[startX][i] == 'X') hurdle = true
                 }
             } else {
-                for (i in startX..startX + moveX) {
-                    println(listOf(i, startY))
+                val range = if (moveX >= 0) startX..finalX else startX downTo finalX
+                for (i in range) {
                     if (park[i][startY] == 'X') hurdle = true
                 }
             }
 
-            // 뒤로가는 처리가 안 됨 (추가 필요)
-            
             if (!hurdle) {
                 startX += moveX
                 startY += moveY
