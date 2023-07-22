@@ -10,12 +10,12 @@ import checkAnswer
 /** 이제 백준 허브로 자세한 내용이 커밋되고 여기는 풀이만 작성 **/
 
 private fun solution(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
-    var answer: IntArray = intArrayOf()
-
-    val reportMap = hashMapOf<String, MutableList<String>>()
+    val idMap = mutableMapOf<String, Int>()
+    val reportMap = mutableMapOf<String, HashSet<String>>()
 
     id_list.forEach { id ->
-        reportMap[id] = mutableListOf()
+        reportMap[id] = hashSetOf()
+        idMap[id] = 0
     }
 
     report.forEach { re ->
@@ -23,13 +23,18 @@ private fun solution(id_list: Array<String>, report: Array<String>, k: Int): Int
         val from = reporter[0]
         val to = reporter[1]
 
+        // 신고를 한 사람을 추가하는게 아니라 신고를 받은 사람을 추가
+        // 반대로 생각하기
         reportMap[to]?.add(from)
     }
 
-    // 이제 한명의 신고는 하나로 처리해야함
-    // 그 다음 k랑 비교해서 메일 개수 확인
+    id_list.forEach { it ->
+        if (reportMap[it]!!.size >= k) {
+            reportMap[it]?.forEach { idMap[it] = idMap[it]!! + 1 }
+        }
+    }
 
-    return answer
+    return idMap.values.toIntArray()
 }
 
 fun main() {
