@@ -14,7 +14,7 @@ class Solution {
         }.toIntArray()
     }
 
-    fun total(date: String): Int {
+    private fun total(date: String): Int {
         val (yyyy, mm, dd) = date.split(".").map(String::toInt)
         return yyyy * 12 * 28 + mm * 28 + dd
     }
