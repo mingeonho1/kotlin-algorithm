@@ -37,7 +37,6 @@ class Solution {
             val finalX = startX + moveX
             val finalY = startY + moveY
 
-            // 뒤로 움직일 때를 고려한 조건
             if (finalX in 0..maxX && finalY in 0..maxY
                 && startX in 0..maxX && startY in 0..maxY
             ) {
