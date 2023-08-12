@@ -13,8 +13,6 @@ class Solution {
             val from = reporter[0]
             val to = reporter[1]
 
-            // 신고를 한 사람을 추가하는게 아니라 신고를 받은 사람을 추가
-            // 반대로 생각하기
             reportMap[to]?.add(from)
         }
 
