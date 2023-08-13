@@ -1,7 +1,6 @@
 class Solution {
     fun solution(k: Int, tangerine: IntArray): Int {
-        val tangerineMap = tangerine.groupBy { it }.mapValues { it.value.size }
-        val valueList = tangerineMap.values.sortedDescending()
+        val valueList = tangerine.groupBy { it }.mapValues { it.value.size }.values.sortedDescending()
 
         var answer = 0
         var sum = 0
