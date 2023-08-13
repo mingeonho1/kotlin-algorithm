@@ -1,11 +1,5 @@
 class Solution {
-    fun solution(k: Int, tangerine: IntArray): Int {
-        val valueList = tangerine.groupBy { it }.mapValues { it.value.size }.values.sortedDescending()
-
-        var answer = 0
-        var sum = 0
-
-        valueList.takeWhile { sum += it; answer++; sum < k }
-        return answer
-    }
+    fun solution(k: Int, tangerine: IntArray): Int =
+        tangerine.groupBy { it }.values.map { it.size }.sortedDescending().runningFold(0) { acc, i -> acc + i }
+            .indexOfFirst { it >= k }.takeIf { it != -1 } ?: tangerine.size
 }
