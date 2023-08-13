@@ -1,5 +1,15 @@
 class Solution {
-    fun solution(k: Int, tangerine: IntArray): Int =
-        tangerine.groupBy { it }.values.map { it.size }.sortedDescending().runningFold(0) { acc, i -> acc + i }
-            .indexOfFirst { it >= k }.takeIf { it != -1 } ?: tangerine.size
+    fun solution(k: Int, tangerine: IntArray): Int {
+        var answer: Int = 0
+        var limit = 0
+        tangerine.groupBy { it }.toList().sortedByDescending { it.second.size }.forEach {
+            if (limit >= k) {
+                return answer
+            }
+            limit += it.second.size
+            answer++
+        }
+
+        return answer
+}
 }
